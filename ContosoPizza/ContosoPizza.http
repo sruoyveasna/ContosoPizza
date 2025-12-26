@@ -1,6 +1,47 @@
-@ContosoPizza_HostAddress = http://localhost:5016
+@ContosoPizza_HostAddress = https://localhost:7203
 
 GET {{ContosoPizza_HostAddress}}/weatherforecast/
 Accept: application/json
+
+###
+
+GET {{ContosoPizza_HostAddress}}/api/pizza
+
+###
+
+
+@id=5
+GET {{ContosoPizza_HostAddress}}/api/pizza/{{id}}
+
+###
+
+POST {{ContosoPizza_HostAddress}}/api/pizza
+Content-Type: application/json
+
+{
+    "name": "Shrimpo",
+    "price": 4.7,
+    "size": "S",
+    "description": "2 members",
+    "isGlutenFree": true
+}
+
+###
+@id=3
+DELETE {{ContosoPizza_HostAddress}}/api/pizza/{{id}}
+
+###
+@id=4
+PUT {{ContosoPizza_HostAddress}}/api/pizza/{{id}}
+Content-Type: application/json
+
+{
+    "id": 4,
+    "name": "Tomata Drums",
+    "price": 9.2,
+    "size": "M",
+    "description": "for four members",
+    "isGlutenFree": false
+}
 
 ###

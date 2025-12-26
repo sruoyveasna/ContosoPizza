@@ -14,5 +14,28 @@ namespace ContosoPizza.Services
             ];
         }
         public static List<Pizza> GetAll() => Pizzas;
+
+        public static Pizza? GetById(int id) => Pizzas.FirstOrDefault(p => p.Id == id);
+
+        public static void Add(Pizza pizza)
+        {
+            pizza.Id = Pizzas.Count + 1;
+            Pizzas.Add(pizza);
+        }
+        public static void Delete(int id)
+        {
+            var pizza = GetById(id);
+            if (pizza is null)
+                return;
+            Pizzas.Remove(pizza);
+        }
+        public static void Update(Pizza pizza)
+        {
+            var index = Pizzas.FindIndex(p => p.Id == pizza.Id);
+            if (index == -1)
+                return;
+            Pizzas[index] = pizza;
+        }
+
     }
 }
